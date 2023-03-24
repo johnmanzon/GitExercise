@@ -3,9 +3,9 @@ sap.ui.define([
         "sap/ui/model/Filter",
         "sap/ui/model/FilterOperator",
         "sap/m/MessageBox",
-    	"sap/ui/table/RowAction",
-	"sap/ui/table/RowActionItem",
-	"sap/ui/table/RowSettings"    
+        "sap/ui/table/RowAction",
+        "sap/ui/table/RowActionItem",
+        "sap/ui/table/RowSettings"
     ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
@@ -16,7 +16,7 @@ sap.ui.define([
 
         return Controller.extend("sapips.training.employeeapp.controller.EmployeeList", {
             onInit: function () {
-			var fnPress = this.handleActionPress.bind(this);                
+                var fnPress = this.handleActionPress.bind(this);
 
 
             },
@@ -32,26 +32,26 @@ sap.ui.define([
                 MessageBox.confirm("Are you sure?");
             },
 
-            onDisplay: function () {          
-               /* 
-                var oPath = oEvent.getSource().getBindingContextPath();
-                var selectedItem = oEvent.getSource().getBindingContext("oEmployee").getProperty(oPath);                
-                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                oRouter.navTo("EmployeeDisplay", {
-                    EmployeeID: selectedItem.EmployeeID,
-                });
-                */
+            onDisplay: function () {
+                /* 
+                 var oPath = oEvent.getSource().getBindingContextPath();
+                 var selectedItem = oEvent.getSource().getBindingContext("oEmployee").getProperty(oPath);                
+                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                 oRouter.navTo("EmployeeDisplay", {
+                     EmployeeID: selectedItem.EmployeeID,
+                 });
+                 */
 
 
                 var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("EmployeeDisplay")          
+                oRouter.navTo("EmployeeDisplay")
             },
 
-            getRouter: function() {
+            getRouter: function () {
                 return sap.ui.core.UIComponent.getRouterFor(this);
-            },            
+            },
 
-            onSelectEmployee: function(oEvent){
+            onSelectEmployee: function (oEvent) {
 
                 //Get the Control(List)
                 var oList = oEvent.getSource();
@@ -63,11 +63,11 @@ sap.ui.define([
                 var sSelItemPath = oSelItem.getBindingContextPath();
 
                 //Bind the selected item to control(simpleform in Panel4)
-                this.getView().byId("idProductDetails").bindElement( {
+                this.getView().byId("idProductDetails").bindElement({
 
                     path: sSelItemPath,
                     model: "oEmployee"
-                } )
+                })
 
             },
 
@@ -76,6 +76,7 @@ sap.ui.define([
 
                 var sQuery = oEvent.getSource().getValue();
 
+                /*
                 var oFilter = new Filter({
  
                     filters: [
@@ -90,6 +91,24 @@ sap.ui.define([
                     ],
                     and: false
                 });
+                */
+
+                var oFilter = new Filter({
+
+                    filters: [
+
+                        new Filter("EmployeeID", FilterOperator.Contains, sQuery),
+                        new Filter("tolower(FirstName)", FilterOperator.Contains, "'" + sQuery.toLowerCase().replace("'", "''") + "'"),
+                        new Filter("tolower(LastName)", FilterOperator.Contains, "'" + sQuery.toLowerCase().replace("'", "''") + "'"),
+                        new Filter("Age", FilterOperator.EQ, sQuery),
+                        //    new Filter("tolower(DateHire)", FilterOperator.Contains, "'" + sQuery.toLowerCase().replace("'", "''") + "'"),
+                        new Filter("tolower(CarrerLevel)", FilterOperator.Contains, "'" + sQuery.toLowerCase().replace("'", "''") + "'"),
+                        new Filter("tolower(CurrentProject)", FilterOperator.Contains, "'" + sQuery.toLowerCase().replace("'", "''") + "'")
+                    ],
+                    and: false
+                });
+
+
 
                 // filter binding
                 var oList = this.getView().byId("idEmployee");
@@ -98,7 +117,7 @@ sap.ui.define([
 
             },
 
-            handleActionPress: function(oEvent) {
+            handleActionPress: function (oEvent) {
                 var oRow = oEvent.getParameter("row");
                 var oItem = oEvent.getParameter("item");
             },
