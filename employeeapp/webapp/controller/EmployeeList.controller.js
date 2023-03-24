@@ -100,8 +100,8 @@ sap.ui.define([
                         new Filter("EmployeeID", FilterOperator.Contains, sQuery),
                         new Filter("tolower(FirstName)", FilterOperator.Contains, "'" + sQuery.toLowerCase().replace("'", "''") + "'"),
                         new Filter("tolower(LastName)", FilterOperator.Contains, "'" + sQuery.toLowerCase().replace("'", "''") + "'"),
-                        new Filter("Age", FilterOperator.EQ, sQuery),
-                        //    new Filter("tolower(DateHire)", FilterOperator.Contains, "'" + sQuery.toLowerCase().replace("'", "''") + "'"),
+                       // new Filter("Age", FilterOperator.EQ, sQuery)
+                       //    new Filter("tolower(DateHire)", FilterOperator.Contains, "'" + sQuery.toLowerCase().replace("'", "''") + "'"),
                         new Filter("tolower(CarrerLevel)", FilterOperator.Contains, "'" + sQuery.toLowerCase().replace("'", "''") + "'"),
                         new Filter("tolower(CurrentProject)", FilterOperator.Contains, "'" + sQuery.toLowerCase().replace("'", "''") + "'")
                     ],
