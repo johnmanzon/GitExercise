@@ -1,27 +1,33 @@
-<mvc:View controllerName="sapips.training.employeeapp.controller.App"
-    xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns:form="sap.ui.layout.form"
-    xmlns="sap.m">
-	<IconTabBar
-		id="idIconTabBarNoIcons"
-		expanded="{oEmployee>/Employee}"
-		class="sapUiResponsiveContentPadding">
-		<items>
-			<IconTabFilter text="Employee Info" key="info">
-            <form:SimpleForm id="empInfo">
-                <Panel>
-                    <Text text="{oEmployee>EmployeeID}" />
+<mvc:View controllerName="sapips.training.employeeapp.controller.App" xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:form="sap.ui.layout.form" xmlns="sap.m">
+    <IconTabBar id="idIconTabBarNoIcons" expanded="{oEmployee>/Employee}" class="sapUiResponsiveContentPadding">
+        <items>
+            <IconTabFilter text="Employee Info" key="info">
+
+                <Panel id="empInfoPanel" headerText="Employee Info" class="sapUiResponsiveMargin" width="auto">
+                    <form:SimpleForm id="empInfoForm">
+                        <Label text='Employee ID' />
+                        <Text value="{oEmployee>EmployeeID}" />
+                        <Label text='First Name' />
+                        <Text value="{oEmployee>FirstName}" />
+                        <Label text='Last Name' />
+                        <Text value="{oEmployee>LastName}" />
+                        <Label text='Age' />
+                        <Text value="{oEmployee>Age}" />
+                        <Label text='Hire Date' />
+                        <Text value="{oEmployee>DateHire}" />
+                        <Label text='Career Level' />
+                        <Text value="{oEmployee>CarrerLevel}" />
+                        <Label text='Current Project' />
+                        <Text value="{oEmployee>CurrentProject}" />
+                    </form:SimpleForm>
                 </Panel>
-            </form:SimpleForm>
-			</IconTabFilter>
-			<IconTabFilter text="Skills" key="skills">
-            <form:SimpleForm id="empSkills">
-                <Panel>
-                    
-                </Panel>
-            </form:SimpleForm>
-			</IconTabFilter>
-		</items>
-	</IconTabBar>
+
+
+            </IconTabFilter>
+            <IconTabFilter text="Skills" key="skills">
+
+            </IconTabFilter>
+        </items>
+    </IconTabBar>
 </mvc:View>

@@ -32,7 +32,17 @@ sap.ui.define([
                 MessageBox.confirm("Are you sure?");
             },
 
-            onDisplay: function () {            
+            onDisplay: function () {          
+               /* 
+                var oPath = oEvent.getSource().getBindingContextPath();
+                var selectedItem = oEvent.getSource().getBindingContext("oEmployee").getProperty(oPath);                
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oRouter.navTo("EmployeeDisplay", {
+                    EmployeeID: selectedItem.EmployeeID,
+                });
+                */
+
+
                 var oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo("EmployeeDisplay")          
             },
