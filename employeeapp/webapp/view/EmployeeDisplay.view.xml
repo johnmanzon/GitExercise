@@ -1,0 +1,27 @@
+<mvc:View controllerName="sapips.training.employeeapp.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m">
+	<IconTabBar
+		id="idIconTabBarNoIcons"
+		expanded="{oEmployee>/Employee}"
+		class="sapUiResponsiveContentPadding">
+		<items>
+			<IconTabFilter text="Employee Info" key="info">
+            <form:SimpleForm id="empInfo">
+                <Panel>
+                    <Text text="{oEmployee>EmployeeID}" />
+                </Panel>
+            </form:SimpleForm>
+			</IconTabFilter>
+			<IconTabFilter text="Skills" key="skills">
+            <form:SimpleForm id="empSkills">
+                <Panel>
+                    
+                </Panel>
+            </form:SimpleForm>
+			</IconTabFilter>
+		</items>
+	</IconTabBar>
+</mvc:View>

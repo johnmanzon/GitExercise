@@ -64,6 +64,12 @@
                 <Label text='Discontinued' />
                 <Input value="{mock>Discontinued}" />
                 </form:SimpleForm>
+    <CustomListItem>
+        <HBox>
+            <Label text="{ProductName}"/>
+            <Button text="Add Product" click="onCreate" />
+        </HBox>
+    </CustomListItem>                   
             </Panel>
         </content>
     </Page>
